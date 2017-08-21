@@ -7,6 +7,10 @@ body {
   color: silver;
 }
 
+#idw-preload {
+  background: url('../media/idw.jpg') no-repeat -2147483647px -2147483647px;
+}
+
 #elm-app {
   display: inline-block;
   width: 16cm;
