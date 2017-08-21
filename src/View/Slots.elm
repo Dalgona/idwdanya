@@ -65,27 +65,34 @@ progressView : Int -> Slot -> Html Msg
 progressView index slot =
   let
     time = slot.timeRemaining
+    seconds = time // 100
+    hundredth = time % 100 |> toString |> String.padLeft 2 '0'
+    buttonToShow =
+      if time == 0
+        then button
+          [class "finish", onClick <| Finish index]
+          [text "제조완료"]
+        else button
+          [class "finish-now", onClick <| FinishNow index]
+          [text "즉시완성"]
   in
     div [class "progress"]
-      [ div [] [text <| formatTime time]
-      , div []
-        [ if time == 0
-            then button [onClick <| Finish index] [text "제조완료"]
-            else button [onClick <| FinishNow index] [text "즉시완성"]
-        ]
+      [ div [class "time-remaining"]
+          [ span [] [text <| formatTime seconds]
+          , span [class "hundredth"] [text <| hundredth]
+          ]
+      , buttonToShow
       ]
 
 
 formatTime : Int -> String
 formatTime time =
   let
-    (time1, hundredth) = (time // 100, time % 100)
-    (time2, seconds) = (time1 // 60, time1 % 60)
-    (hours, minutes) = (time2 // 60, time2 % 60)
+    (time1, seconds) = (time // 60, time % 60)
+    (hours, minutes) = (time1 // 60, time1 % 60)
     convert num = num |> toString |> String.padLeft 2 '0'
     hh = convert hours
     mm = convert minutes
     ss = convert seconds
-    tt = convert hundredth
   in
-    String.concat [hh, ":", mm, ":", ss, " ", tt]
+    String.concat <| List.intersperse ":" [hh, mm, ss]
