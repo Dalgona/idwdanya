@@ -22,6 +22,8 @@ html {
   width: 100%;
   height: 100%;
   background-color: #152E4D;
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
 }
 
 /*
@@ -218,17 +220,79 @@ html {
 
 .order-form {
   display: flex;
+  align-items: flex-end;
   position: absolute;
-  top: 5.25rem;
+  top: calc(5.25rem - 1px);
   left: 1rem;
-  width: calc(100% - 2rem);
+  width: calc(100% - 1rem);
   height: calc(100% - 6.25rem);
-  background-color: green;
-  z-index: 2147483647;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(144, 208, 48, 0.4);
+  background-color: rgba(48, 48, 48, 0.9);
+  box-shadow: inset 0 0 4rem rgba(144, 208, 48, 0.3);
+  color: white;
+  z-index: 32768;
+}
+
+.order-form .left {
+  margin-left: 0.5rem;
+  background-color: #303030;
+  box-shadow: inset 0 0 0.5rem #101010;
+  padding: 2px;
+}
+
+.order-form .left header {
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.order-form .left header span {
+  display: block;
+}
+
+.order-form .left header .title {
+  font-size: 0.8rem;
+}
+
+.order-form .left header .label {
+  font-size: 0.6rem;
+}
+
+.order-form .left header .tickets {
+  margin-top: 0.25rem;
+  font-family: 'dosis';
+  font-size: 1.25rem;
+}
+
+.order-form .left button {
+  width: 100%;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 1.25rem;
+  margin-top: 5px;
+  padding: 0.25rem 1rem;
+}
+
+.order-form .left .confirm {
+  background-color: #ffcc00;
+}
+
+.order-form .left .cancel {
+  padding: 0 1rem;
 }
 
 .order-form .right {
-  flex-wrap: wrap;
+  flex: 1;
+  height: 100%;
+}
+
+.order-form .box {
+  width: 5rem;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.2);
+  box-shadow: 0 0 0.5rem #303030;
 }
 
 /*
@@ -236,21 +300,55 @@ html {
  */
 
 .value-control {
-  display: inline-block;
-  width: 50%;
-  height: 50%;
+  display: inline-flex;
+  box-sizing: border-box;
+  margin: 0.5rem;
+  width: calc(50% - 1rem);
+  height: calc(50% - 1rem);
+  border: 1px solid rgba(144, 208, 48, 0.5);
+  box-shadow: 0 0 0.25em rgba(255, 255, 255, 0.25), inset 0 0 2em rgba(144, 208, 48, 0.5);
+  background-color: rgba(64, 64, 64, 0.5);
 }
 
-.value-control .digits {
+.value-control .label {
+  flex: 4;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .value-control .digit-control {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .value-control .digit-control button {
-  background-color: lime;
+  flex: 2;
+  background-color: yellowgreen;
   border: 1px solid black;
+  margin: 1px;
+}
+
+.value-control .digit-control .digit {
+  flex: 3;
+  border-top: 2px dashed yellowgreen;
+  border-bottom: 2px dashed yellowgreen;
+  margin: 2px;
+  padding: 1px 0;
+  text-align: center;
+}
+
+.value-control .digit-control .digit span {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid yellowgreen;
+  font-family: 'dosis';
+  font-size: 2.5rem;
+  line-height: 1em;
 }
 
 /*

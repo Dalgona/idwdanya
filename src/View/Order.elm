@@ -4,7 +4,7 @@ module View.Order exposing (render)
 import Html exposing (..)
 import Html.Attributes exposing (class)
 import Html.Events exposing (..)
-import Model exposing (Model, UIState(..))
+import Model exposing (Model, UIState(..), resName)
 import Msg exposing (..)
 
 
@@ -23,10 +23,19 @@ form model slotNum =
   div [class "order-form"]
     [ div [class "left"]
         [ divRemaining model
-        , div [] [button [onClick <| CompleteOrder slotNum] [text "제조개시"]]
-        , div [] [button [onClick CancelOrder] [text "취소"]]
+        , div []
+            [ button
+              [class "confirm", onClick <| CompleteOrder slotNum]
+              [text "제조개시"]
+            ]
+        , div []
+            [ button
+              [class "cancel", onClick CancelOrder]
+              [text "취소"]
+            ]
         ]
     , div [class "right"] (List.indexedMap valueControl model.use)
+    , div [class "box"] []
     ]
 
 
@@ -50,17 +59,16 @@ valueControl resId resValue =
   let
     digits = resValue |> toString |> String.padLeft 3 '0' |> String.toList
   in
-    div [class "value-control"]
-      [ div [] [text <| toString resId]
-      , div [class "digits"]
-          (List.map2 (digitControl resId) digits [100, 10, 1])
-      ]
+    div [class "value-control"] (
+      [ div [class "label"] [span [] [text <| resName resId]]
+      ] ++ (List.map2 (digitControl resId) digits [100, 10, 1])
+    )
 
 
 digitControl : Int -> Char -> Int -> Html Msg
 digitControl resId digit delta =
   div [class "digit-control"]
-    [ div [] [button [onClick <| SetUse (+) resId delta] [text "▲"]]
-    , div [] [span [] [text <| String.fromChar digit]]
-    , div [] [button [onClick <| SetUse (-) resId delta] [text "▼"]]
+    [ button [onClick <| SetUse (+) resId delta] [text "▲"]
+    , div [class "digit"] [span [] [text <| String.fromChar digit]]
+    , button [onClick <| SetUse (-) resId delta] [text "▼"]
     ]

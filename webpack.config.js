@@ -38,6 +38,12 @@ module.exports = {
         use: [
           'url-loader?limit=131072'
         ]
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: [
+          'url-loader?limit=131072'
+        ]
       }
     ],
     noParse: /\.(elm|woff|woff2)$/

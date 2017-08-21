@@ -1,7 +1,8 @@
-module Model exposing (Model, Slot, UIState(..), init, useResource)
+module Model exposing (Model, Slot, UIState(..), init, useResource, resName)
 
 
 import Array exposing (..)
+import Maybe exposing (..)
 import Result
 
 
@@ -56,3 +57,13 @@ useResource model use =
       else if List.all (\x -> x > 0) remaining
         then Ok {model | resources = remaining}
         else Err "not enough resource"
+
+
+resName : Int -> String
+resName resId =
+  let
+    names = Array.fromList ["인력", "탄약", "식량", "부품"]
+  in
+    case Array.get resId names of
+      Just str -> str
+      Nothing -> ""
