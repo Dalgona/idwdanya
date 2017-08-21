@@ -1,16 +1,23 @@
 html {
   font-size: 14px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+}
+
+body {
+  background: black;
+  color: silver;
 }
 
 #elm-app {
   display: inline-block;
   width: 16cm;
   height: 9cm;
+  color: black;
   background-color: whitesmoke;
+  border: 5px ridge gray;
   overflow: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /*
