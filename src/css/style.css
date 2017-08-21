@@ -1,0 +1,268 @@
+html {
+  font-size: 14px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#elm-app {
+  display: inline-block;
+  width: 16cm;
+  height: 9cm;
+  background-color: whitesmoke;
+  overflow: hidden;
+}
+
+/*
+ * MAIN
+ */
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #152E4D;
+}
+
+/*
+ * RESOURCES
+ */
+
+.resources {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 3.5em;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 70%, rgba(96, 96, 96, 0.85));
+  box-shadow: 0 0 0.25em black;
+  z-index: 3
+}
+
+.resources .contents {
+  width: 12em;
+  margin-left: auto;
+}
+
+.resources .contents div.item {
+  display: inline-block
+}
+
+.resources .contents span.label {
+  display: inline-block;
+  width: 2em;
+  color: white;
+}
+
+.resources .contents span.value {
+  display: inline-block;
+  width: 4em;
+  color: #ffbb00;
+  font-weight: bold;
+}
+
+.items .contents div.item {
+  display: inline-block;
+  margin-right: 2em;
+}
+
+/*
+ * ITEMS
+ */
+
+.items {
+  position: absolute;
+  top: 3.5rem;
+  width: 100%;
+  height: 1.75rem;
+  border-bottom: 1px solid #aaa;
+  padding: 0.25rem 1.25rem;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  text-align: right;
+  background-color: rgba(96, 96, 96, 0.85);
+  box-shadow: 0 0 0.25em black;
+  z-index: 2;
+}
+
+.items .contents div.item:last-child {
+  margin-right: 0;
+}
+
+.items .contents span.label {
+  margin-right: 0.5em;
+  color: white;
+}
+
+.items .contents span.value {
+  color: #ffbb00;
+}
+
+/*
+ * SLOT LIST
+ */
+
+.slot-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding-top: 4.25rem;
+  width: calc(100% + 16px);
+  height: 100%;
+  overflow-y: scroll;
+  z-index: 1;
+}
+
+/*
+ * SLOT
+ */
+
+.slot {
+  display: flex;
+  position: relative;
+  margin: 1rem;
+  box-sizing: border-box;
+  border: 3px solid #303030;
+  background-color: #303030;
+}
+
+.slot .mid {
+  padding: 0.5em 1em;
+  color: white;
+  font-family: 'dosis';
+  text-align: center;
+}
+
+.slot .mid span {
+  display: block;
+}
+
+.slot .mid .title {
+  line-height: 1em;
+  opacity: 0.5;
+}
+
+.slot .mid .num {
+  margin-top: -0.1em;
+  font-size: 3em;
+  line-height: 1.1em;
+}
+
+.slot .mid .standby {
+  font-size: 0.6em;
+  line-height: 1em;
+  opacity: 0.5;
+}
+
+.slot.locked .mid {
+  width: 100%;
+  z-index: 1;
+}
+
+.slot.locked .mid .standby {
+  visibility: hidden;
+}
+
+.slot.locked .label {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  left: 25%;
+  bottom: 0.1em;
+  background-color: orangered;
+  font-family: 'dosis';
+  font-size: 1.75em;
+  color: white;
+  z-index: 0;
+}
+
+.slot .left {
+  flex: 1;
+  background: linear-gradient(to right, yellowgreen, white);
+}
+
+.slot .right {
+  flex: 1;
+  background-color: #484848;
+}
+
+.start-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 0.25em 0.75em;
+  width: 100%;
+  height: 100%;
+}
+
+.start-button .caption {
+  font-size: 0.75em;
+}
+
+.start-button .title {
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+/*
+ * ORDER FORM
+ */
+
+.order-form {
+  display: flex;
+  position: absolute;
+  top: 5.25rem;
+  left: 1rem;
+  width: calc(100% - 2rem);
+  height: calc(100% - 6.25rem);
+  background-color: green;
+  z-index: 2147483647;
+}
+
+.order-form .right {
+  flex-wrap: wrap;
+}
+
+/*
+ * VALUE CONTROL
+ */
+
+.value-control {
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+}
+
+.value-control .digits {
+  display: flex;
+}
+
+.value-control .digit-control {
+}
+
+.value-control .digit-control button {
+  background-color: lime;
+  border: 1px solid black;
+}
+
+/*
+ * RESULT
+ */
+
+.doll-result {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}

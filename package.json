@@ -1,0 +1,31 @@
+{
+  "name": "idwdanya",
+  "version": "0.0.1",
+  "description": "IDW manufacturing simulator",
+  "homepage": "http://dalgona.hontou.moe",
+  "license": "MIT",
+  "author": {
+    "name": "Eunbin Jeong",
+    "email": "dalgona@hontou.moe",
+    "url": "https://dalgona.hontou.moe"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --port 5757"
+  },
+  "dependencies": {
+    "webpack": "~3.0.0",
+    "webpack-dev-middleware": "~1.11.0",
+    "webpack-dev-server": "~2.5.0",
+    "elm-webpack-loader": "~4.3.1",
+    "file-loader": "~0.11.2",
+    "style-loader": "~0.18.2",
+    "css-loader": "~0.28.4",
+    "url-loader": "~0.5.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dalgona/idwdanya.git"
+  }
+}
