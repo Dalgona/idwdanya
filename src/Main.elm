@@ -30,13 +30,13 @@ update msg model =
   case msg of
     StartOrder slotNum ->
       if model.ticket > 0
-        then ({model | uiState = PressedStart slotNum}, Cmd.none)
+        then ({model | uiState = OrderForm slotNum}, Cmd.none)
         else (model, Cmd.none) -- TODO: show error when not enough ticket
 
     CompleteOrder slotNum ->
       let
-        newSlot = Slot True True 2000
-        --newSlot = Slot True True 420000
+        --newSlot = Slot True True 2000
+        newSlot = Slot True True 420000
         newModel =
           case Model.useResource model model.use of
             Ok newModel ->
@@ -69,7 +69,7 @@ update msg model =
         slot = Slot True False 0
         newSlots = Array.set slotNum slot model.slots
       in
-        ({model | slots = newSlots, uiState = IDWDANYA}, Cmd.none)
+        ({model | slots = newSlots, uiState = ShowIDW True}, Cmd.none)
 
     FinishNow slotNum ->
       let
@@ -81,11 +81,17 @@ update msg model =
               { model
               | slots = newSlots
               , express = model.express - 1
-              , uiState = IDWDANYA
+              , uiState = ShowIDW True
               }
             else model -- TODO: show error when not enough ticket
       in
         (newModel, Cmd.none)
+
+    HideVideo ->
+      ({model | uiState = ShowIDW False}, Cmd.none)
+
+    HideIDW ->
+      ({model | uiState = Normal}, Cmd.none)
 
     Tick _ ->
       let
@@ -97,16 +103,13 @@ update msg model =
       in
         ({model | slots = updatedSlots}, Cmd.none)  
 
-    _ ->
-      (model, Cmd.none)
-
 
 view : Model -> Html Msg
 view model =
   let
     mainView =
       case model.uiState of
-        PressedStart _ ->
+        OrderForm _ ->
           div [] [View.Order.render model]
         _ ->
           div [class "slot-list"] [View.Slots.render model]
@@ -115,7 +118,7 @@ view model =
       [ div [class "resources"] [View.Resources.render model]
       , div [class "items"] [View.Items.render model]
       , mainView
-      , div [] [View.Result.render model]
+      , div [class "doll-result"] (View.Result.render model)
       ]
 
 

@@ -40,9 +40,15 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|png|svg|mp4)$/,
+        test: /\.(jpg|png|svg)$/,
         use: [
           'url-loader?limit=131072'
+        ]
+      },
+      {
+        test: /\.mp4$/,
+        use: [
+          'file-loader?name=[name].[ext]'
         ]
       }
     ],

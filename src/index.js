@@ -1,6 +1,7 @@
 'use strict';
 
 require('./index.html');
+require('./media/result-intro.mp4');
 import './css/fonts.css';
 import './css/style.css';
 

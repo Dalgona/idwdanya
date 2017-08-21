@@ -26,9 +26,8 @@ type alias Slot =
 
 type UIState
   = Normal
-  | PressedStart Int
-  | PressedFinish Int
-  | IDWDANYA
+  | OrderForm Int
+  | ShowIDW Bool
 
 
 init : Model

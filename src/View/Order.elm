@@ -14,7 +14,7 @@ render model =
     foo = 0
   in
     case model.uiState of
-      PressedStart slotNum -> form model slotNum
+      OrderForm slotNum -> form model slotNum
       _ -> div [] []
 
 

@@ -11,6 +11,6 @@ type Msg
   | SetUse (Int -> Int -> Int) Int Int
   | Finish Int
   | FinishNow Int
-  | Msg1
-  | Msg2
+  | HideVideo
+  | HideIDW
   | Tick Time

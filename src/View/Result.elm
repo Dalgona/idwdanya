@@ -2,14 +2,39 @@ module View.Result exposing (render)
 
 
 import Html exposing (..)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (autoplay, class, src)
 import Html.Events exposing (..)
+import Json.Decode exposing (succeed)
 import Model exposing (Model, UIState(..))
 import Msg exposing (..)
 
 
-render : Model -> Html Msg
+render : Model -> List (Html Msg)
 render model =
-  if model.uiState == IDWDANYA
-    then div [class "doll-result"] []
-    else div [] []
+  case model.uiState of
+    ShowIDW introPlaying ->
+      let
+        (videoClass, imgClass) =
+          if introPlaying
+            then ("", "hidden")
+            else ("idw-image hidden", "idw-image")
+      in
+        [ div
+            [ class imgClass
+            , onClick HideIDW
+            ] []
+        , video
+            [ class videoClass
+            , onEnded HideVideo
+            , src "./result-intro.mp4"
+            , autoplay True
+            ] []
+        ]
+
+    _ ->
+      []
+
+
+onEnded : Msg -> Attribute Msg
+onEnded msg =
+  on "ended" (succeed msg)
