@@ -2,7 +2,7 @@ module View.Result exposing (render)
 
 
 import Html exposing (..)
-import Html.Attributes exposing (autoplay, class, src)
+import Html.Attributes exposing (attribute, autoplay, class, src)
 import Html.Events exposing (..)
 import Json.Decode exposing (succeed)
 import Model exposing (Model, UIState(..))
@@ -28,6 +28,7 @@ render model =
             , onEnded HideVideo
             , src "./result-intro.mp4"
             , autoplay True
+            , attribute "muted" "muted"
             ] []
         ]
 
